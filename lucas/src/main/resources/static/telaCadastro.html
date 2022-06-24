@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script language="javascript" src="index.js"></script>
+    <script language="javascript" src="validacao.js"></script>
+    <link rel="stylesheet" href="styleCadastro.css">
+
+    <title>Página de cadastro</title>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-header-title">Cadastro</h4>
+        </div>
+        <div class="card-body">
+            <div class="col d-flex mt-3" id="mainDiv">
+                <form class="col-12" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                            <label for="inputUsuario"> Nome: </label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputUsuario"
+                                    name="nUsuario"
+                                    placeholder="Nome"
+                            />
+                        </div>
+
+                        <div class="form-group col-md-6 col-12">
+                            <label for="inputCpf"> CPF: </label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputCpf"
+                                    name="nCpf"
+                                    placeholder="Somente números"
+                                    onblur="verificaCPF()"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                            <label for="inputEmail"> Email: </label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputEmail"
+                                    name="nEmail"
+                                    placeholder="usuario@example.com"
+                                    onblur="verificaEmail()"
+                            />
+                        </div>
+                        <div class="form-group col-md-6 col-12">
+                            <label for="inputSenha"> Senha: </label>
+                            <div class="row">
+                            <input
+                                    type="password"
+                                    class="form-control col-10 senhaInput"
+                                    id="inputSenha"
+                                    name="nSenha"
+                                    placeholder="Sua senha"
+                                    onblur="verificaSenha()"
+
+                            />
+                            <div class="col-1">
+                                <span
+                                        onmouseover="showSenha()"
+                                        onmouseout="hideSenha()"
+                                >
+                                    <img class="testeImagem" src="http://i.stack.imgur.com/H9Sb2.png">
+                                </span>
+                            </div>
+                            </div>
+                            <small>Digite sua senha com mais de 6 caracteres</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                            <label for="inputDtNasc"> Data de nascimento: </label>
+                            <input
+                                    type="date"
+                                    class="form-control"
+                                    id="inputDtNasc"
+                                    name="nDtNasc"
+                            />
+                        </div>
+                        <div class="form-group col-md-6 col-12">
+                            <label for="selectSexo"> Sexo: </label>
+                            <select id="selectSexo" name="nSexo" class="form-control">
+                                <option selected class="text-center">Escolher...</option>
+                                <option class="text-center">Feminino</option>
+                                <option class="text-center">Masculino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                        <button
+                                type="button"
+                                id="btn2"
+                                class="col-12 btn btn-secondary mb-2"
+                                onclick="telaInicial()">
+                            Voltar a tela inicial
+                        </button>
+                        </div>
+                        <div class="form-group col-md-6 col-12">
+                        <button
+                                type="submit"
+                                class="col-12 btn btn-primary float-right"
+                                id="btn1"
+                        >
+                            Cadastrar
+                        </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

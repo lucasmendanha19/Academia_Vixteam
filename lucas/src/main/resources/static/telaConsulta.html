@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="index.js"></script>
+    <script src="validacao.js"></script>
+    <link rel="stylesheet" href="styleConsulta.css">
+    <title>Página de consulta</title>
+</head>
+<body>
+<div class="container" id="divPrimaria">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-header-title text-center">CONSULTA</h4>
+        </div>
+        <div class="card-body">
+            <div class="col d-flex mt-3">
+<!--                <form method="post">-->
+                    <div class="form-group col-md-12 col-12">
+                        <label for="inputUsuario"> Nome: </label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="inputUsuario"
+                                name="nUsuario"
+                                placeholder="Nome"
+                        />
+                    </div>
+<!--                </form>-->
+                </div>
+            <div class="col d-flex mt-3">
+            <div class="col-12">
+            <div class="row">
+                <div class="form-group col-md-6 col-12">
+                    <button
+                            type="button"
+                            id="btn2"
+                            class="col-12 btn btn-secondary mb-2"
+                            onclick="telaInicial()">
+                        Voltar a tela inicial
+                    </button>
+                </div>
+                <div class="form-group col-md-6 col-12">
+                    <button
+                            type="submit"
+                            class="col-12 btn btn-primary float-right"
+                            onclick="buscaCliente()"
+                    >
+                        Consultar
+                    </button>
+                </div>
+            </div>
+            </div>
+            </div>
+            <span id="spanNull"></span>
+        </div>
+    </div>
+    <div class="alert alert-primary mt-5" id="divConsulta" hidden>
+<!--        <span id="spanNull"></span>-->
+        <table  class="table table-striped" >
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th class="text-center" scope="col">Email</th>
+                <th class="text-center" scope="col">CPF</th>
+                <th class="text-center" scope="col">Senha</th>
+                <th scope="col">Data de Nascimento</th>
+                <th class="text-center" scope="col">Sexo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" id="thId"></th>
+                <td id="tdNome"></td>
+                <td id="tdEmail"></td>
+                <td id="tdCpf"></td>
+                <td class="text-center" id="tdSenha"></td>
+                <td id="tdDtNasc"></td>
+                <td id="tdSexo"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col d-flex mt-3">
+            <div class="col-12">
+                    <form method="delete" action="/delete">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputId" name="nId" placeholder="Seu id" hidden>
+                        </div>
+                        <div class="row">
+                    <div class="form-group col-md-6 col-12">
+                        <button
+                                type="submit"
+                                id="btnDel"
+                                class="col-12 btn btn-secondary mb-2"
+                                >
+                            Deletar
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <button
+                                type="button"
+                                class="col-12 btn btn-primary float-right"
+                                id="btnUpdate"
+                                onclick="telaUpdate()"
+                        >
+                            Alterar dados
+                        </button>
+                    </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" id="divSecundaria" hidden>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-header-title">Alteração de dados</h4>
+        </div>
+        <div class="card-body">
+            <div class="col d-flex mt-3">
+                <form class="col-12" method="post" action="/update" id="formUpdate">
+                    <input type="text" id="inputIdUp" name="nIdUp" hidden>
+                        <div class="form-group col-12">
+                            <label for="inputUsuarioUp"> Nome: </label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputUsuarioUp"
+                                    name="nUsuarioUp"
+                                    placeholder="Nome"
+                            />
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="inputEmailUp"> Email: </label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="inputEmailUp"
+                                    name="nEmailUp"
+                                    placeholder="usuario@example.com"
+                                    onblur="verificaEmail()"
+                            />
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="inputSenhaUp"> Senha: </label>
+                            <input
+                                    type="password"
+                                    class="form-control"
+                                    id="inputSenhaUp"
+                                    name="nSenhaUp"
+                                    placeholder="Sua senha"
+                                    onblur="verificaSenha()"
+                            />
+                            <small>Digite sua senha com mais de 6 caracteres</small>
+                        </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                            <button
+                                    type="button"
+                                    class="col-12 btn btn-secondary mb-2"
+                                    onclick="telaConsulta()">
+                                Voltar a tela de consulta
+                            </button>
+                        </div>
+                        <div class="form-group col-md-6 col-12">
+                            <button
+                                    type="submit"
+                                    class="col-12 btn btn-primary float-right"
+                                    id= "btn1"
+                            >
+                                Alterar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+</body>
+
+
+</html>
